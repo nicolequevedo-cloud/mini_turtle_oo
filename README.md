@@ -4,33 +4,46 @@ codigo:
 ```
 import turtle
 
-# Crear las dos tortugas
-t1 = turtle.Turtle()
-t2 = turtle.Turtle()
-turtle.bgcolor("black")
+screen = turtle.Screen()
+screen.bgcolor("black")
 
+# CLASE
+class MiTortuga:
+    def __init__(self, color, velocidad, inicio_x):
+        self.t = turtle.Turtle()
+        self.t.color(color)
+        self.t.speed(velocidad)
 
-# Configuración para que se vea el movimiento
-t1.speed(2)
-t2.speed(1)
+        self.t.penup()
+        self.t.goto(inicio_x, 0)
+        self.t.pendown()
 
-t1.color("pink")
-t2.color("light blue")
+        self.posicion_x = inicio_x
 
-# Mover t2 a otro lugar para que no se crucen
-t2.penup()
-t2.goto (160,0)
-t2.pendown()
+    def adelante(self, distancia):
+        self.t.forward(distancia)
+        self.posicion_x += distancia
 
-#  Triángulo con t1
-for i in range(3):
-    t1.forward(120)
-    t1.left(120)
+    def girar(self, grados):
+        self.t.left(grados)
 
-# Exágono t2 (diferente distancia)
-for i in range(6):
-    t2.forward(60)
-    ```
-    t2.left(60)
+    def triangulo(self):
+        for _ in range(3):
+            self.adelante(120)
+            self.girar(120)
 
+    def hexagono(self):
+        for _ in range(6):
+            self.adelante(60)
+            self.girar(60)
+
+# OBJETOS
+t1 = MiTortuga("pink", 2, 0)
+t2 = MiTortuga("light blue", 1, 160)
+
+t1.triangulo()
+t2.hexagono()
+
+# FIN 
 turtle.done()
+
