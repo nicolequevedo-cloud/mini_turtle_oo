@@ -1,22 +1,11 @@
-from mini_turtle_oo import Tortuga
-import turtle
+from mini_tracker_oo import Tracker
 
-# Crear dos tortugas
-t1 = Tortuga()
-t2 = Tortuga()
+tracker = Tracker()
 
-# Mover t1
-t1.adelante(100)
-t1.abajo(50)
-t1.adelante(70)
+tracker.iniciar_tarea("Estudiar Python")
+tracker.detener_tarea(2.5)
 
-# Mover t2
-t2.abajo(30)
-t2.adelante(60)
-t2.abajo(40)
+tracker.iniciar_tarea("Hacer tarea")
+tracker.detener_tarea(1.5)
 
-# Reiniciar t1 y moverlo de nuevo
-t1.reiniciar()
-t1.adelante(50)
-
-turtle.done()
+print(f"Tiempo total trabajado: {tracker.consultar_total()} horas")
